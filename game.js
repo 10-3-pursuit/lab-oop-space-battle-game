@@ -19,7 +19,7 @@ class Player {
   attack(target) {
     target.hp -= this.power - target.armor
     console.log(
-      `HIT! You've struck an alien ship! Their current HP is now ${target.hp}`
+      `${this.name}, Nice HIT!! You've struck an alien ship! Their current HP is now ${target.hp}`
     )
   }
 }
@@ -33,7 +33,7 @@ class AlienShip {
   attack(player) {
     player.hp -= this.power - player.armor
     console.log(
-      `You've been struck! ${player.name}'s health is now ${player.hp}`
+      `${player.name} You've been struck! Your health is now ${player.hp}`
     )
   }
 }
@@ -64,6 +64,9 @@ const startGame = (name) => {
   // Create a boolean to determine whose turn it is
   let playersTurn = true
   // Create the game loop (while loop) that will iterate while both the player and enemy ships have HP
+  console.log(
+    `LET THE GAME BEGIN!!! Good Luck ${player.name}!\n---------------------------------\nFirst Battle:\n`
+  )
   while (player.hp > 0 && alienShips.length > 0) {
     // Initialize current target
     const currentTarget = alienShips[0]
@@ -83,6 +86,7 @@ const startGame = (name) => {
       alienShips.shift()
       console.log('You defeated an alien ship! NICE!')
       console.log(`${alienShips.length} alien ships remain!`)
+      console.log(`----------------------------------\nNext Battle:\n\n`)
     }
   }
 

@@ -36,6 +36,10 @@ The objective of this lab is to create a simple space battle game where the play
 - Inside the `attack` method, subtract the damage (`this.power`) minus the target's armor from the target's HP and log the attack result.
   (e.g. `HIT! You've struck an alien ship! Their current HP is now 25` except the number 25 will be dynamic and not hardcoded)
 
+### Testing (Optional):
+
+- Uncomment the testing code after you've completed both the Player and the Alien class. This is only to test the classes before the statGame function is built. You have the ability to test the `attack` method of both classes. Just run `node game.js` in your terminal.
+
 ### Create the Game Loop and Start Game Function:
 
 1. Define a function named `startGame` that takes the player's name as a parameter.
@@ -69,11 +73,6 @@ The objective of this lab is to create a simple space battle game where the play
 ### Run the Game:
 
 - Call the `startGame` function with a player name to start the game. For example, `startGame("YourName")`.
-
-### Testing (Optional):
-
-- Uncomment the testing code at the end of the provided script to create instances and test the `attack` method of both classes.
-
-Following these steps will help you build a functional space battle game in JavaScript using Object-Oriented Programming principles.
+- In your terminal type `node game.js`. You will see the output of your game.
 
 **Credits: Carlos Godoy**
