@@ -48,6 +48,9 @@ const startGame = (name) => {
             playersTurn = !playersTurn
             for(let alien of alienShips){
                 alien.attack(player)
+                if(player.hp <= 0){
+                    break
+                }
             }
         }
     }
