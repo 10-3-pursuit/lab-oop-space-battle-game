@@ -1,10 +1,9 @@
 class Player {
     constructor(name) {
         this.name = name;
-        this.hp = hp;
-        this.power;
-        this.damage;
-        this.armor;
+        this.hp = 1000;
+        this.power = Math.floor(Math.random() * 100) + 50; // can inflict this range of damage onto other object
+        this.armor = Math.floor(Math.random() * 21) + 20; // range is 21 numbers (which is 0-20 and adding 20 shifts it to 20-40)
     }
     attack() {
         console.log("You were attacked")
@@ -13,10 +12,9 @@ class Player {
 
 class AlienShip {
     constructor() {
-        this.hp = hp;
-        this.power;
-        this.damage;
-        this.armor;
+        this.hp = 100;
+        this.power = Math.floor(Math.random() * 31) + 30; // can inflict this range of damage onto other object
+        this.armor = Math.floor(Math.random() * 21);
     }
     attack() {
         console.log("You were attacked")
