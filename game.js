@@ -39,13 +39,15 @@ class AlienShip {
 // console.log(player1)
 
 // Game Loop so player/enemy can take a turn attacking each other
-const startGame = (playerName) => {
+const startGame = (playerName, AlienCount = 6) => {
     const player = new Player(playerName);
     const alienShips = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < AlienCount; i++) {
         alienShips.push(new AlienShip());
     }
     let playersTurn = true;
+
+    console.log(`You are atttacked by ${AlienCount} Alien ships!`)
 
     while (player.hp > 0 && alienShips.length > 0) {
         const currentTarget = alienShips[0];
@@ -67,10 +69,10 @@ const startGame = (playerName) => {
     }
 
     if (alienShips.length === 0) {
-        console.log(`Congratulations ${playerName}! You defeated all alien ships.`);
+        console.log(`Congratulations ${playerName}! You defeated all ${AlienCount} alien ships.`);
     } else {
-        console.log(`Game over! ${playerName}, your spaceship has been destroyed.`);
+        console.log(`Game over! ${playerName}, your spaceship has been destroyed.${AlienCount} Alien Ships remain!`);
     }
 }
 
-startGame('Callister')
+startGame('Callister',7)
