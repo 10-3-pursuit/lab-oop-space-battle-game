@@ -11,7 +11,6 @@ class Player {
         console.log(`HIT! You've struck an alien ship! Their current HP is now ${target.hp}`);
     }
 }
-
 class AlienShip {
     constructor() {
         this.hp = 100;
