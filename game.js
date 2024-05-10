@@ -1,6 +1,27 @@
-class Player {}
+class Player {
+    constructor(name) {
+        this.name = name;
+        this.hp = hp;
+        this.power;
+        this.damage;
+        this.armor;
+    }
+    attack() {
+        console.log("You were attacked")
+    }
+}
 
-class AlienShip {}
+class AlienShip {
+    constructor() {
+        this.hp = hp;
+        this.power;
+        this.damage;
+        this.armor;
+    }
+    attack() {
+        console.log("You were attacked")
+    }
+}
 
 // Testing purposes -- not part of the game!
 // const player1 = new Player("Callister")
