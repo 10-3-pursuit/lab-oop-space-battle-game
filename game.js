@@ -6,7 +6,7 @@ class Player {
         this.armor = Math.floor(Math.random() * 21) + 20; // range is 21 numbers (which is 0-20 and adding 20 shifts it to 20-40)
     }
     attack(alienShip) {
-        console.log(`HIT! You've struck an alien ship! Their HP was ${alienShip.hp}, but after you attacked with power ${this.power} damage it diminished their ${alienShip.armor} armor  and ${alienShip.hp} HP . Their HP and armor is now a total of ${(alienShip.armor + alienShip.hp) - this.power} hp`)
+        console.log(`HIT! You've struck an alien ship! Their HP was ${alienShip.hp}, but after you attacked with power ${this.power} damage it diminished their ${alienShip.armor} armor and HP. Their HP and armor is now a total of ${(alienShip.armor + alienShip.hp) - this.power} hp`)
     }
 }
 
@@ -17,16 +17,16 @@ class AlienShip {
         this.armor = Math.floor(Math.random() * 21);
     }
     attack(player) {
-        console.log(`You attacked ${player.name}`)
+        console.log(`An alien ship attacked ${player.name}`)
     }
 }
 
-const dogeAlienShip = new AlienShip();
+const alienShips = [new AlienShip(), new AlienShip(), new AlienShip(), new AlienShip(), new AlienShip()];
 
 const player1 = new Player("player1")
 
-dogeAlienShip.attack(player1);
-player1.attack(dogeAlienShip);
+alienShips[0].attack(player1);
+player1.attack(alienShips[0]);
 
 // Testing purposes -- not part of the game!
 // const player1 = new Player("Callister")
