@@ -21,12 +21,12 @@ class AlienShip {
     }
 }
 
-const alienShips = [new AlienShip(), new AlienShip(), new AlienShip(), new AlienShip(), new AlienShip()];
+//const alienShip = new AlienShip();
 
-const player1 = new Player("player1")
+//const player1 = new Player("player1")
 
-alienShips[0].attack(player1);
-player1.attack(alienShips[0]);
+//alienShip.attack(player1);
+//player1.attack(alienShip);
 
 // Testing purposes -- not part of the game!
 // const player1 = new Player("Callister")
@@ -43,6 +43,26 @@ player1.attack(alienShips[0]);
 // console.log(player1)
 
 // Game Loop so player/enemy can take a turn attacking each other
-const startGame = () => {}
+const startGame = (player) => {
+    const player1 = new Player(player);
+    const alienShips = [
+        new AlienShip(), 
+        new AlienShip(), 
+        new AlienShip(), 
+        new AlienShip(), 
+        new AlienShip(), 
+        new AlienShip()
+    ];
+    console.log(`${player1.name}, welcome to the game!`);
+    // make 6 alienships (an array of Alien ships)
+    // player1 goes first
+    // keep track who's turn it is using last attacker - basically if player1 just went it is the alien ships turn
+    // game continues as until player1's hp is 0 or all alien ships hp is 0. Inside the loop check if the player.hp > 0 and if there are still alien ships (alienShips.length > 0) - do while loop
+    let lastAttacker = player1;
+    // player's turn
+    while (player1.hp > 0 && alienShips[i].hp > 0) {
 
-startGame('Callister')
+    }
+};
+
+startGame('Callister');
