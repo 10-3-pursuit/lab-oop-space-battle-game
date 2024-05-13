@@ -6,8 +6,14 @@ class Player {
         this.armor = Math.floor(Math.random() * 21) + 20; // range is 21 numbers (which is 0-20 and adding 20 shifts it to 20-40)
     }
     attack(alienShip) {
-        const damage = this.power - alienShip.armor;
-        alienShip.hp -= damage;
+        const damage = this.power;
+        const remainingArmor = alienShip.armor - damage;
+        const totalDamage = damage - alienShip.armor;
+        const remainingHp = alienShip.hp - totalDamage;
+        
+        alienShip.hp = remainingHp; // this sets it to the new calculated value based on damage instead of updating it to current value remainingHp = alienShip.hp, which means that remainingHp will hold the same value as alienShip.hp, but it won't update the hp property of the alienShip object itself
+        alienShip.armor = remainingArmor;
+
         console.log(`HIT! You've struck an alien ship! Their HP was ${alienShip.hp}, but after you attacked with power ${this.power} damage it diminished their ${alienShip.armor} armor and HP. Their HP and armor is now a total of ${(alienShip.armor + alienShip.hp) - this.power} hp`)
     }
 }
@@ -19,9 +25,15 @@ class AlienShip {
         this.armor = Math.floor(Math.random() * 21);
     }
     attack(player) {
-        const damage = this.power - player.armor;
-        player.hp -= damage;
-        console.log(`An alien ship attacked ${player.name}`)
+        const damage = this.power;
+        const totalDamage = damage - player.armor;
+        const remainingArmor = player.armor - damage;
+        const remainingHp = player.hp - totalDamage;
+        
+        player.hp = remainingHp;
+        player.armor = remainingArmor;
+
+        console.log(`An alien ship attacked you. You now have ${remainingHp}hp and ${remainingArmor}armor.`)
     }
 }
 
@@ -69,8 +81,10 @@ const startGame = (player) => {
     // The shift() method returns the shifted element.
 
     let lastAttacker = player1;
+    let playerTurn = true; // to toggle btween turns since player always goes twice otherwise
     // player's turn
     while (player1.hp > 0 && alienShips.some(alienShip => alienShip.hp > 0)) {
+    if (playerTurn) {
         player1.attack(alienShips[0]);
         lastAttacker = player1;
         if (alienShips[0].hp <= 0) {
@@ -81,18 +95,21 @@ const startGame = (player) => {
             console.log(`Game over! ${player1.name} spaceship has been destroyed!`);
             break; // so game ends
         }
-    }
-    // Alien turn
-    for (let i=0; i < alienShips.length; i++) {
-        if (alienShips[i].hp > 0) {
-            alienShips[i].attack(player1); // each ship still in array attacks player1
-            lastAttacker = alienShips[i];
+    } else {
+        for (let i=0; i < alienShips.length; i++) {
+
+            if (alienShips[i].hp > 0) {
+                alienShips[i].attack(player1); // each ship still in array attacks player1
+                lastAttacker = alienShips[i];
+            }
+            if (player1.hp <=0) {
+                console.log(`Game over! ${player1.name} spaceship has been destroyed!`);
+                break; // so game ends
+            }
         }
-        if (player1.hp <=0) {
-            console.log(`Game over! ${player1.name} spaceship has been destroyed!`);
-            break; // so game ends
-        }
     }
+    playerTurn = !playerTurn //switches the turn
+}
 };
 
 startGame('Callister');
