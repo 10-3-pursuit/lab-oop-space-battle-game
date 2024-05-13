@@ -71,7 +71,7 @@ const startGame = (playerName, AlienCount = 6) => {
     if (alienShips.length === 0) {
         console.log(`Congratulations ${playerName}! You defeated all ${AlienCount} alien ships.`);
     } else {
-        console.log(`Game over! ${playerName}, your spaceship has been destroyed.${AlienCount} Alien Ships remain!`);
+        console.log(`Game over! ${playerName}, your spaceship has been destroyed.${alienShips.length} Alien Ships remain!`);
     }
 }
 
