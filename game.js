@@ -57,10 +57,13 @@ const startGame = (player) => {
     // make 6 alienships (an array of Alien ships)
     // player1 goes first
     // keep track who's turn it is using last attacker - basically if player1 just went it is the alien ships turn
-    // game continues as until player1's hp is 0 or all alien ships hp is 0. Inside the loop check if the player.hp > 0 and if there are still alien ships (alienShips.length > 0) - do while loop
+    // game continues until player1's hp is 0 or less or until all alien ships hp is 0 or less. Inside the loop check if the player.hp > 0 or if there are still alien ships with hp greater than 0 - do while loop
+    // The some() method returns true (and stops) if the function returns true for one of the array elements.
+    // The some() method returns false if the function returns false for all of the array elements.
+    
     let lastAttacker = player1;
     // player's turn
-    while (player1.hp > 0 && alienShips[i].hp > 0) {
+    while (player1.hp > 0 || alienShips.some(alienShip => alienShip.hp > 0)) {
 
     }
 };
