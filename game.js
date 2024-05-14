@@ -7,7 +7,7 @@ class Player {
     }
     attack(target){
         target.hp -= (this.power - target.armor) 
-        console.log(`HIT! You've struck an alien ship! Their current HP is now ${target.hp}`)
+        console.log(`HIT! You've struck an alien ship! Their current HP is now ${target.hp > 0 ? target.hp : 0}`)
     }
 }
 
@@ -58,7 +58,7 @@ const startGame = (name) => {
     if(alienShips.length === 0){
         console.log(`YOU WIN! ${player.name} defeated all alien ships!`)
     } else {
-        console.log(`YOU LOST! Alien ships have defeated ${player.name}`)
+        console.log(`YOU LOST! Alien ships have defeated ${player.name}.`)
     }
 }
 
