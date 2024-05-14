@@ -8,7 +8,13 @@ class Player {
 
 }
 
-class AlienShip { }
+class AlienShip {
+    constructor() {
+        this.hp = 100;
+        this.power = Math.floor(Math.random() * (60 - 30 + 1) + 30)
+        this.armor = Math.floor(Math.random() * (20 + 1))
+    }
+}
 
 // Testing purposes -- not part of the game!
 // const player1 = new Player("Callister")
