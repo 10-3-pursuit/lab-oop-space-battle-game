@@ -5,7 +5,11 @@ class Player {
         this.power = Math.floor(Math.random() * (100 - 50 + 1) + 50);
         this.armor = Math.floor(Math.random() * (40 - 20 + 1) + 20);
     }
-
+    attack(target) {
+        const attackPoints = this.power - target.armor;
+        target.hp -= attackPoints;
+        console.log(`HIT! You've struck an alien ship! Their current HP is now ${target.hp}`)
+    }
 }
 
 class AlienShip {
